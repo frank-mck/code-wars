@@ -35,3 +35,23 @@ function shortestStepsToNum(num) {
     num % 2 == 0 ? num /= 2 : num--, ticks++;
   return ticks
 }
+
+// Take a Ten Minute Walk
+function isValidWalk(walk) {
+  let startingPoint = 0;
+  if (walk.length !== 10) {
+    return false;
+  }
+  walk.map(letter => {
+    if (letter === 'n') {
+      startingPoint += 1
+    } else if(letter === 's') {
+      startingPoint -= 1
+    } else if (letter === 'w') {
+      startingPoint += 2;
+    } else if (letter === 'e'){
+      startingPoint -= 2;
+    }
+  })
+return startingPoint === 0 ? true : false;
+}
