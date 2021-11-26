@@ -55,3 +55,10 @@ function isValidWalk(walk) {
   })
 return startingPoint === 0 ? true : false;
 }
+
+// Move zeros
+var moveZeros = function (arr) {
+  let withoutZeros = arr.filter(el => /[1-9]/ig.test(el) ? parseInt(el) : /[0]/ig.test(el) ? false : true);
+  let zeros = arr.join("").match(/[0]/g).map(Number)
+  return withoutZeros.concat(zeros)
+}
