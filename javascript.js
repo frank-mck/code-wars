@@ -62,3 +62,11 @@ var moveZeros = function (arr) {
   let zeros = arr.join("").match(/[0]/g).map(Number)
   return withoutZeros.concat(zeros)
 }
+
+// Playing with digits
+function digPow(n, p){
+  let result = 0
+  n.toString().split("").map((num, i) => result += num **(p+i));
+  let k = Math.floor(result / n);
+  return k * n == result ? k : -1
+}
