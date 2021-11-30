@@ -70,3 +70,8 @@ function digPow(n, p){
   let k = Math.floor(result / n);
   return k * n == result ? k : -1
 }
+
+// Detect pangram
+function isPangram(string){
+  return string.match(/([a-z])(?!.*\1)/ig).length === 26;
+}
