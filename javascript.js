@@ -75,3 +75,16 @@ function digPow(n, p){
 function isPangram(string){
   return string.match(/([a-z])(?!.*\1)/ig).length === 26;
 }
+
+// Human readable
+
+function humanReadable (seconds) {
+  let formatSeconds = new Intl.DateTimeFormat('en-GB', {timeStyle: "medium" }).format(seconds * 1000);
+  if (seconds >= 86399) {
+    let hours = Math.floor(seconds / 3600);
+    let mins = formatSeconds.slice(2);
+    return hours + mins;
+  } else {
+    return formatSeconds;
+  }
+}
