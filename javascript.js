@@ -88,3 +88,56 @@ function humanReadable (seconds) {
     return formatSeconds;
   }
 }
+
+// RGB to hex 'to be refactored'
+
+function rgb(r, g, b){
+  let rangeChecker = [r, g, b].map(num => {
+    if (num > 255) {
+      return 255;
+    } else if (num < 0) {
+      return 0;
+    } else {
+      return num;
+    }
+  });
+ 
+  let rgb = [...rangeChecker].map(num => parseFloat(num / 16).toFixed(2).split("."));
+  
+  let hexValues = rgb.map(num => {
+    let {0: left, 1: right} = num;   
+    left = parseFloat(left)
+    right = Math.round(right * 0.01 * 16);
+    return [left, right];
+  });
+  
+  const convertToHex = (num) => {
+    if (num == 10) {
+      return 'A';
+    } else if(num == 11) {
+      return 'B';
+    } else if(num == 12) {
+      return 'C';
+    } else if(num == 13) {
+      return 'D';
+    } else if(num == 14) {
+      return 'E';
+    } else if(num == 15) {
+      return 'F';
+    } else if(num > 15) {
+      return 'F';
+    } else if(num < 0) {
+      return '0';
+    } else {
+      return num.toString()
+    }
+  }
+  
+  return hexValues.map(values => {
+    let {0: left, 1: right} = values;
+    let result = ''
+    result += convertToHex(left);
+    result += convertToHex(right);
+    return result;
+  }).join("")
+}
