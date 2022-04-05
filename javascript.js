@@ -141,3 +141,26 @@ function rgb(r, g, b){
     return result;
   }).join("")
 }
+
+//  Maximum Subarray - O(n) solution
+var maxSubArray = function(nums) {
+  // to hold value of max sum encountered
+ let maxSum = -Infinity;
+   
+ // to hold value of current sum as we iterate
+ let currSum = 0;
+ 
+ for (let i = 0; i < nums.length; i++) {
+   /*
+     take currSum as the max between the current num
+     or the result of adding current num to currSum.
+   */
+   currSum = Math.max(currSum + nums[i], nums[i]);
+   /*
+     update max sum if currSum exceeds it.
+   */
+   maxSum = Math.max(maxSum, currSum);
+ }
+ 
+ return maxSum;
+};
