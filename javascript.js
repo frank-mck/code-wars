@@ -164,3 +164,25 @@ var maxSubArray = function(nums) {
  
  return maxSum;
 };
+
+
+// Search Insert Position - O(log n) solution
+
+var searchInsert = function(nums, target) {
+  let first = 0, last = nums.length - 1;
+  let mid;
+  
+  while (first <= last) {
+      mid = Math.floor((first + last) / 2);
+      const val = nums[mid];
+      if (val === target) {
+          return mid;
+      } else if (target < val) {
+          last = mid - 1;
+      } else if (target > val) {
+          first = mid + 1;
+      }
+      
+  }
+  return target < nums[mid] ? mid : mid + 1;
+}; 
