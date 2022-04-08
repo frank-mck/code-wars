@@ -186,3 +186,14 @@ var searchInsert = function(nums, target) {
   }
   return target < nums[mid] ? mid : mid + 1;
 }; 
+
+// Merge sorted array - O(1) solution
+
+var merge = function(nums1, m, nums2, n) {
+  if (nums2.length === 0) {
+    nums1 = nums1
+  } else {
+    nums1.splice(m, n, ...nums2);
+    nums1.sort((a, b) => a - b);
+  }
+};
