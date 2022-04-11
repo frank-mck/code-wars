@@ -197,3 +197,35 @@ var merge = function(nums1, m, nums2, n) {
     nums1.sort((a, b) => a - b);
   }
 };
+
+// Intersection of Two Arrays II - O(1) solution
+
+var intersect = function(nums1, nums2) {
+  let isNums1Larger = nums1.length >= nums2.length;
+  let result = [];
+  let one = [...nums1], two = [...nums2];
+  
+  if (nums1.length === 1 && nums2.indexOf(nums1[0]) !== -1) return nums1
+  
+  if (isNums1Larger) {
+      nums1.map((num) => {
+          let found = two.indexOf(num);
+       
+          if (found !== -1) {
+             result.push(found);
+             two.splice(found, 1, 'false')
+          } 
+      });
+  } else {
+      nums2.map((num) => {
+        let found = one.indexOf(num);
+        
+        if (found !== -1) {
+             result.push(found);
+             one.splice(found, 1, 'false')
+          } 
+      });       
+  }
+
+  return isNums1Larger ? result.map(n => n = nums2[n]) : result.map(n => n = nums1[n]);
+};
